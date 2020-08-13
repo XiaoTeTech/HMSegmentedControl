@@ -16,6 +16,7 @@ typedef void (^IndexChangeBlock)(NSUInteger index);
 typedef NSAttributedString *_Nonnull(^HMTitleFormatterBlock)(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
 typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStyle) {
+    HMSegmentedControlSelectionStyleFixedWidth,
     HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
     HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
     HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
@@ -79,6 +80,13 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
  When this block is set, no additional styling is applied to the `NSAttributedString` object returned from this block.
  */
 @property (nonatomic, copy, nullable) HMTitleFormatterBlock titleFormatter;
+
+/**
+ Width of the selection indicator. Only effective when `HMSegmentedControlSelectionStyleFixedWidth`
+ 
+ Default is 12.0
+ */
+@property (nonatomic) CGFloat selectionIndicatorWidth;
 
 /**
  Text attributes to apply to item title text.
